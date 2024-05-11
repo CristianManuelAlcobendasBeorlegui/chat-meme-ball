@@ -16,7 +16,7 @@
 
         // === COMUNICACION WEBSOCKETS === //
         socket.on("chat message", function(msg) {
-            const item = "<li>" + msg + "</li>";
+            const item = "<li>" + generaSimboloRaro() + "</li>";
             ulMessages.insertAdjacentHTML("beforeend", item);
             ulMessages.scrollTop = ulMessages.scrollHeight;
         });
@@ -33,7 +33,42 @@
             }
         });
 
-        
+        // === METODOS === //
+
+        /**
+         * Devuelve un simbolo aleatorio.
+         * 
+         * @return String
+         * */
+         function generaSimboloRaro() {
+            let arrayRareSymbols = [
+                "ʚ(*´꒳`*)ɞ",
+                "〵(^ o ^)〴",
+                "(◍•ᴗ•◍)❤",
+                "(•`益´•)",
+                "( •̀ᴗ•́ )و ̑̑",
+                "(ꈍ‿ꈍ)",
+                "︻デ═一",
+                "(╯︿╰)",
+                "\( ﾟヮﾟ)/",
+                "(⋑✿˘ ³˘)˘ε˘˶ ⋐)",
+                "︻╦╤─",
+                "┐(´-`)┌",
+                "(˵´•‿•`˵ ⑅)",
+                "(ง'̀-'́)ง",
+                "八(＾□＾*)",
+                "( ͡° ͜ʖ ͡°)",
+                "╚(″⚈ᴗ⚈)╗",
+                "♪┏(・o･)┛♪┗( ･o･)┓♪",
+                "\ \ \\ (۶•̀ᴗ•́)۶ // / /",
+                "(ง •̀ ᗨ•́)ง▬▬ι══════>",
+                "♫♪.ılılıll|̲̅̅●̲̅̅|̲̅̅=̲̅̅|̲̅̅●̲̅̅|llılılı.♫♪",
+                "♫♪╔(^o^)╝╚(^o^)╗ ╚(^o^)╝╔(^o^)╗♫♪",
+                "♫͙◟̊₍ꃓ₎◞◟₍ꃔ₎◞̊♫͙"
+            ];
+            let randomIndex = Math.floor(Math.random() * (arrayRareSymbols.length - 1));
+            return arrayRareSymbols[randomIndex];
+        }
     </script>
     <style>
         *,
