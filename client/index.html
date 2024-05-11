@@ -8,8 +8,22 @@
         // === DEPENDENCIAS === //
         import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
         
-        // === CONSTANTES === //
+        // === CONSTANTES, ELEMENTOS DEL DOM === //
         const socket = io();
+        const form = document.getElementById("form");
+        const inputMessage = document.getElementById("input-message");
+    
+        // === EVENTOS === //
+        form.addEventListener("submit", function(event) {
+            // Evita el comportamiento normal del formulario
+            event.preventDefault();
+
+            if (inputMessage.value) {
+                // Envia el mensaje a traves del WebSocket
+                socket.emit('chat message', inputMessage.value);
+                inputMessage.value = '';
+            }
+        });
     </script>
     <style>
         *,

@@ -23,6 +23,10 @@ io.on("connection", function(socket) {
     socket.on("disconnect", function() {
         console.log("Se ha desconectado un usuario.");
     });
+
+    socket.on("chat message", function(message) {
+        console.log("Message: " + message);
+    });
 })
 
 server.listen(port, function() {
