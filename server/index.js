@@ -25,7 +25,8 @@ io.on("connection", function(socket) {
     });
 
     socket.on("chat message", function(message) {
-        console.log("Message: " + message);
+        // Envia el mensaje a todos los usuarios conectados (Broadcast)
+        io.emit("chat message", message);
     });
 })
 
