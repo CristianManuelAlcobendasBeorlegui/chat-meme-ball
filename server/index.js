@@ -19,6 +19,6 @@ app.listen(port, function() {
 
 // === RUTAS === //
 app.get("/", function(request, response) {
-    response.send("Esto es el chat");
+    response.sendFile(process.cwd() + "/client/index.html");
 });
 
