@@ -16,7 +16,7 @@
 
         // === COMUNICACION WEBSOCKETS === //
         socket.on("chat message", function(msg) {
-            const item = "<li>" + generaSimboloRaro() + "</li>";
+            const item = "<li>" + msg + "</li>";
             ulMessages.insertAdjacentHTML("beforeend", item);
             ulMessages.scrollTop = ulMessages.scrollHeight;
         });
@@ -32,6 +32,8 @@
                 inputMessage.value = '';
             }
         });
+
+        
     </script>
     <style>
         *,
