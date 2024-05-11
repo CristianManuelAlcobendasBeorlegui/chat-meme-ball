@@ -41,6 +41,21 @@ io.on("connection", function(socket) {
         // Envia el mensaje a todos los usuarios conectados (Broadcast)
         io.emit("chat message", message);
     });
+    
+    // Si la conexion con el Socket se pierde y no se recupera carga los mensajes de la BD
+    if (!socket.recovered) {
+        // Consigue todos los mensajes guardados en BD
+        db.all("SELECT content FROM messages", [], function(error, rows) {
+            if (error) {
+                throw error;
+            }
+
+            // Envia cada mensaje a traves del Socket
+            rows.forEach((row) => {
+                socket.emit("chat message", row.content);
+            });
+        });
+    }
 });
 
 server.listen(port, function() {
