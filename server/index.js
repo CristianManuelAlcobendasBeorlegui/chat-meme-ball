@@ -4,16 +4,28 @@
 // === DEPENDENCIAS === //
 import express from "express";
 import logger from "morgan";
+import { Server } from "socket.io";
+import { createServer } from "node:http";
 
 // === CONSTANTES === //
 const port = 3000;
 const app = express();
+const server = createServer(app);
+const io = new Server(server);
 
 // === LOGGER === //
 app.use(logger('dev'));
 
 // === CONFIGURACION DEL SERVIDOR === //
-app.listen(port, function() {
+io.on("connection", function(socket) {
+    console.log("Se ha conectado un usuario.");
+
+    socket.on("disconnect", function() {
+        console.log("Se ha desconectado un usuario.");
+    });
+})
+
+server.listen(port, function() {
     console.log("Server is listening to *:" + port);
 });
 
