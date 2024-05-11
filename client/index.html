@@ -16,8 +16,9 @@
 
         // === COMUNICACION WEBSOCKETS === //
         socket.on("chat message", function(msg) {
-            const item = "<li>" + msg + "</li>";
+            const item = "<li>" + generaSimboloRaro() + "</li>";
             ulMessages.insertAdjacentHTML("beforeend", item);
+            ulMessages.scrollTop = ulMessages.scrollHeight;
         });
 
         // === EVENTOS === //
@@ -57,6 +58,10 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
+            overflow-y: scroll;
+            height: 100%;
+            scroll-behavior: smooth;
+            padding-bottom: 48px;
         }
 
         #ul-messages > li {
